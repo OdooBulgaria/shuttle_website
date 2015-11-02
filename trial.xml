@@ -1,0 +1,15 @@
+				               		<t t-foreach="info" t-as="vehicle">
+				               			<tr>
+											<td>
+												<strong><span><t t-esc = "vehicle['name']"></t></span></strong>
+											</td>
+											<td>
+												<input type = "text" t-att-name="vehicle['id']" t-att-list = "vehicle['id']"  width = "100px"/>
+												<datalist t-att-id="vehicle['id']">
+													<t t-foreach="vehicle['driver_ids']" t-as = "driver">
+														<option t-att-value = "driver['id']"><t t-esc="driver['name']"></t></option>													
+													</t>
+												</datalist>
+											</td>
+				               			</tr>
+				               		</t>

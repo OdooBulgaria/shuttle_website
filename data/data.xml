@@ -1,0 +1,11 @@
+<openerp>
+	<data noupdate="0">
+        <record id="menu_change_drive" model="website.menu">
+            <field name="name">Change Fleet Drivers</field>
+            <field name="url">/page/home_change_driver</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">60</field>
+        </record>
+		
+	</data>
+</openerp>

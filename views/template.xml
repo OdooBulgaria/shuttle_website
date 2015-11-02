@@ -1,0 +1,49 @@
+<openerp>
+	<data noupdate = "0">
+		<template id="render_fleet_driver" name="Simple Page">
+		    <t t-call="website.layout">
+		        <div class="container">
+		        	<div class ="row mt32 mb32">
+						<t t-if ="acknowledge">
+							<div class="alert alert-success" role="alert">The fleet records have been updated!</div>
+						</t>
+						<form action="/page/change_driver" method="POST" id = "choose_driver"  accept-charset="UTF-8" enctype="application/x-www-form-urlencoded" autocomplete="on">
+				            <table class="table table-condensed">
+				                <thead>
+				                    <tr>
+				                        <th>Fleet</th>
+				                        <th>Driver</th>
+				                    </tr>
+				               </thead>
+				               <tbody class="sale_tbody">
+				               		<t t-foreach="info" t-as="vehicle">
+				               			<tr>
+											<td>
+												<strong><span><t t-esc = "vehicle['name']"></t></span></strong>
+											</td>
+											<td>
+												<select t-att-name="vehicle['id']" style="width:200px;"  form="choose_driver">
+													<option t-att-value="False"></option>
+													<t t-foreach = "vehicle['driver_ids']" t-as = "driver">
+														<t t-if="driver['id'] == vehicle['current_driver']">
+															<option selected = "selected" t-att-value="driver['id']"><t t-esc ="driver['name']"></t></option>
+														</t>
+														<t t-if="driver['id'] != vehicle['current_driver']">
+															<option  t-att-value="driver['id']"><t t-esc ="driver['name']"></t></option>
+														</t>														
+													</t>
+												</select>
+											</td>				               			
+				               			</tr>
+				               		</t>
+				               </tbody>
+		               		</table>
+		               		<input type="submit" value="Submit"/>
+	               		</form>
+		        	</div>
+	        	</div>
+        	</t>
+		</template>	
+	</data>
+</openerp>
+
